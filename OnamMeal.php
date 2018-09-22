@@ -29,8 +29,10 @@
 	$LocalURL = "goe.go.kr";
 	$SchoolCode = "J100005670";
 	$SchoolKind = "4";
+	$Year = "2018";
+	$Month = "08";
 	
-	$array = ParseNEISMeal($LocalURL, $SchoolCode, $SchoolKind);
+	$array = ParseNEISMeal($LocalURL, $SchoolCode, $SchoolKind, $Year, $Month);
 
 	print_r($array);
 ?>

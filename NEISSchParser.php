@@ -25,9 +25,9 @@
 	
 	require 'simple_html_dom.php';
 	
-	function ParseNEISSchedule($localurl, $schulCode, $schulKindCode) {
+	function ParseNEISSchedule($localurl, $schulCode, $schulKindCode, $year, $month) {
 		// NEIS URL
-		$url = "https://stu.$localurl/sts_sci_sf01_001.do?schulCode=$schulCode&schulCrseScCode=$schulKindCode&schulKndScCode=0$schulKindCode";
+		$url = "https://stu.$localurl/sts_sci_sf01_001.do?schulCode=$schulCode&schulCrseScCode=$schulKindCode&schulKndScCode=0$schulKindCode&ay=$year&mm=$month";
 		
 		// Get HTML
 		$html = file_get_html($url);	
@@ -53,11 +53,14 @@
 		
 		// Remove Unnecessary String
 		$schArray = array();
-		$removeArray = array('<div>', '</div>', 'amp');
-		foreach($schData as $text) {
-			$text = str_replace($removeArray, '', $text);
-			$text = str_replace('<br />', ';', $text);
-			$schArray[] = $text;
+		$removeArray = array('<div>', '</div>');
+		foreach($schData as $array) {
+			foreach($array as $text) {
+				$text = str_replace($removeArray, '', $text);
+				$text = str_replace('&amp;', '&', $text);
+				$text = str_replace('<br />', ';', $text);
+				$schArray[] = $text;
+			}
 		}
 		
 		return $schArray;

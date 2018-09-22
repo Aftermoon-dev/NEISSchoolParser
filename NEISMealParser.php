@@ -25,9 +25,9 @@
 	
 	require 'simple_html_dom.php';
 	
-	function ParseNEISMeal($localurl, $schulCode, $schulKindCode) {
+	function ParseNEISMeal($localurl, $schulCode, $schulKindCode, $year, $month) {
 		// NEIS URL
-		$url = "https://stu.$localurl/sts_sci_md00_001.do?schulCode=$schulCode&schulCrseScCode=$schulKindCode&schulKndScCode=0$schulKindCode";
+		$url = "https://stu.$localurl/sts_sci_md00_001.do?schulCode=$schulCode&schulCrseScCode=$schulKindCode&schulKndScCode=0$schulKindCode&ay=$year&mm=$month";
 		
 		// Get HTML
 		$html = file_get_html($url);	
@@ -37,7 +37,7 @@
 		foreach($html->find('table[class=tbl_type3 tbl_calendar]') as $row) {
 			$rowData = array();
 			foreach($row->find('tr td') as $cell) {
-				if($cell->innertext != '<div></div>') {
+				if($cell->innertext != '<div></div>' && $cell->innertext != '<div> </div>') {
 					$rowData[] = $cell->innertext;
 				}
 			}
@@ -47,11 +47,17 @@
 		// Remove Unnecessary String
 		$mealArray = array();
 		$removeArray = array('[중식]<br />', '<div>', '</div>');
-		foreach($mealData as $text) {
-			$text = str_replace($removeArray, '', $text);
-			$text = str_replace("&amp;", '&', $text);
-			$text = str_replace('<br />', ';', $text);
-			$mealArray[] = $text;
+		$divRegex = '/<div>[0-9]*<\/div>/i';
+		foreach($mealData as $array) {
+			foreach($array as $text) {
+				if(preg_match($divRegex, $text)) {
+					$text = str_replace('</div>', ';', $text);
+				}
+				$text = str_replace($removeArray, '', $text);
+				$text = str_replace('&amp;', '&', $text);
+				$text = str_replace('<br />', ';', $text);
+				$mealArray[] = $text;
+			}
 		}
 		
 		return $mealArray;
