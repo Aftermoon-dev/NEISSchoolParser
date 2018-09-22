@@ -86,14 +86,14 @@ The MIT License (MIT)
 PHP Simple HTML DOM Parser
 http://simplehtmldom.sourceforge.net/
 
-```	Website: http://sourceforge.net/projects/simplehtmldom/
-Additional projects that may be used: http://sourceforge.net/projects/debugobject/
-Acknowledge: Jose Solorzano (https://sourceforge.net/projects/php-html/)
-Contributions by:
- Yousuke Kumakura (Attribute filters)
- Vadim Voituk (Negative indexes supports of "find" method)
- Antcs (Constructor with automatically load contents either text or file/url)
+	Website: http://sourceforge.net/projects/simplehtmldom/
+	Additional projects that may be used: http://sourceforge.net/projects/debugobject/
+	Acknowledge: Jose Solorzano (https://sourceforge.net/projects/php-html/)
+	Contributions by:
+ 		Yousuke Kumakura (Attribute filters)
+ 		Vadim Voituk (Negative indexes supports of "find" method)
+ 		Antcs (Constructor with automatically load contents either text or file/url)
 		
-Licensed under The MIT License
-Redistributions of files must retain the above copyright notice.
-```
+	Licensed under The MIT License
+	Redistributions of files must retain the above copyright notice.
+
