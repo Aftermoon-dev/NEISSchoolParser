@@ -30,7 +30,14 @@
 		$url = "https://stu.$localurl/sts_sci_sf01_001.do?schulCode=$schulCode&schulCrseScCode=$schulKindCode&schulKndScCode=0$schulKindCode&ay=$year&mm=$month";
 		
 		// Get HTML
-		$html = file_get_html($url);	
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+		curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36');
+		$str = curl_exec($ch);
+		curl_close($ch);
+		$html = str_get_html($str);
 		
 		// Data Extract
 		$schData = array();
