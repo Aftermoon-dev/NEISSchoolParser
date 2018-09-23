@@ -8,9 +8,17 @@ array 형태로 이번 달 전체 점심 급식과 일정이 return됩니다.
 
 <h2>사용법</h2>
 
-	ParseNEISMeal("지역 교육청 주소", "학교 코드", "학교 종류", "년", "월")
-	ParseNEISSchedule("지역 교육청 주소", "학교 코드", "학교 종류", "년", 월")
+* 급식 파싱
+```
+require "NEISMealParser.php";
+$array = ParseNEISMeal("지역 교육청 주소", "학교 코드", "학교 종류", "년", "월");
+```
 	
+* 일정 파싱
+```
+require "NEISSchParser.php"
+$array = ParseNEISSchedule("지역 교육청 주소", "학교 코드", "학교 종류", "년", 월");
+```
 	
 * 지역 교육청별 홈페이지 주소
 
