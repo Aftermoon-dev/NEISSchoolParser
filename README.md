@@ -16,7 +16,7 @@ $array = ParseNEISMeal("지역 교육청 주소", "학교 코드", "학교 종�
 	
 * 일정 파싱
 ```
-require "NEISSchParser.php"
+require "NEISSchParser.php";
 $array = ParseNEISSchedule("지역 교육청 주소", "학교 코드", "학교 종류", "년", 월");
 ```
 	
