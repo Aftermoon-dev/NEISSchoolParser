@@ -44,7 +44,7 @@ $array = ParseNEISSchedule("지역 교육청 주소", "학교 코드", "학교 �
 
 * 학교 코드
 
-  https://www.meatwatch.go.kr/biz/bm/sel/schoolListPopup.do 에서 학교 코드 검색 가능
+학교의 고유 코드를 입력하세요.
 
 * 학교 종류 번호
 
